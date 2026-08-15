@@ -319,6 +319,29 @@ export function MacBook({ tableHeight }: { tableHeight: number }) {
         <MacBookModel />
       </AutoPlace>
 
+      {/* ── Camera Anchors ──────────────────────────────────────────────
+          We place a target precisely on the screen and a camera position
+          directly in front of it, matching the lid's tilt (-15 deg).
+      ─────────────────────────────────────────────────────────────── */}
+      <group
+        position={[0, sceneConfig.macbook.targetWidth * 0.52, sceneConfig.macbook.targetWidth * 0.04]}
+        rotation={[-0.26, 0, 0]}
+      >
+        <group name="macbook-camera-target" position={[0, 0, 0]} />
+        <group name="macbook-camera-pos" position={[0, 0, 0.42]} />
+      </group>
+
+      {/* ── Background Dimmer ──────────────────────────────────────────
+          When zoomed in, fade a dark plane behind the MacBook to focus 
+          the user entirely on the screen and keyboard.
+      ─────────────────────────────────────────────────────────────── */}
+      {isZoomedIn && (
+        <mesh position={[0, sceneConfig.macbook.targetWidth * 0.5, -0.4]}>
+          <planeGeometry args={[10, 10]} />
+          <meshBasicMaterial color="#000000" transparent opacity={0.85} />
+        </mesh>
+      )}
+
       {/* ── Embedded Screen Content ─────────────────────────────────────
           Rendered as an HTML overlay pinned exactly to where the screen
           face is in 3D space. Only shown when camera is zoomed in so

@@ -12,7 +12,8 @@ export function IntroOverlay() {
 
   if (!mounted) return null;
 
-  const visible = scrollProgress < 0.12;
+  const cameraView = useAppStore((state) => state.cameraView);
+  const visible = scrollProgress < 0.12 && cameraView === "hero";
 
   return (
     <AnimatePresence>

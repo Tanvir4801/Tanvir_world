@@ -72,10 +72,30 @@ export function CameraController() {
   // Update lerp targets when cameraView changes
   useEffect(() => {
     const cfg = VIEW_CONFIGS[cameraView];
+    
+    if (cameraView === "macbook" || cameraView === "iphone") {
+      // For dynamically placed objects, look for their anchors in the scene
+      const posObj = camera.parent?.getObjectByName(`${cameraView}-camera-pos`);
+      const targetObj = camera.parent?.getObjectByName(`${cameraView}-camera-target`);
+      
+      if (posObj && targetObj) {
+        const p = new THREE.Vector3();
+        const t = new THREE.Vector3();
+        posObj.getWorldPosition(p);
+        targetObj.getWorldPosition(t);
+        
+        targetPos.current.copy(p);
+        targetLook.current.copy(t);
+        targetFov.current = cfg.fov;
+        return;
+      }
+    }
+    
+    // Fallback to hardcoded configs
     targetPos.current.copy(cfg.position);
     targetLook.current.copy(cfg.target);
     targetFov.current = cfg.fov;
-  }, [cameraView]);
+  }, [cameraView, camera.parent]);
 
   useFrame((_, delta) => {
     const speed = 2.5 * delta; // smooth dolly
