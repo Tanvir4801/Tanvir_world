@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Tanvir's World"
+description = "A premium interactive 3D developer portfolio that presents Tanvir's engineering workspace as a carefully composed virtual room with real-time 3D assets and restrained studio lighting."
+version = "1.0.0"
+id = "artifacts/tanvir-world"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21620
+
+[services.development]
+run = "pnpm --filter @workspace/tanvir-world run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tanvir-world", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/tanvir-world/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21620"
+BASE_PATH = "/"
