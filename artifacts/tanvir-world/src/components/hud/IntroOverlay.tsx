@@ -10,9 +10,10 @@ export function IntroOverlay() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
+  const cameraView = useAppStore((state) => state.cameraView);
+
   if (!mounted) return null;
 
-  const cameraView = useAppStore((state) => state.cameraView);
   const visible = scrollProgress < 0.12 && cameraView === "hero";
 
   return (
