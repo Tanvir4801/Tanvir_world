@@ -55,7 +55,7 @@ export function Model(props: React.ComponentProps<'group'>) {
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group position={[0, 0, 0.17]} rotation={[-Math.PI / 2, 0, 0]} scale={0.1}>
-            <mesh geometry={nodes.defaultMaterial.geometry} material={materials.Screen_Glass} />
+            <mesh geometry={nodes.defaultMaterial.geometry} material={materials.Screen_Glass} visible={false} />
             <mesh geometry={nodes.defaultMaterial_1.geometry} material={materials.Antenna} />
             <mesh geometry={nodes.defaultMaterial_2.geometry} material={materials.Glass_Camera_Logo} />
             <mesh geometry={nodes.defaultMaterial_3.geometry} material={materials.Back_Cover} />
@@ -67,7 +67,7 @@ export function Model(props: React.ComponentProps<'group'>) {
             <mesh geometry={nodes.defaultMaterial_9.geometry} material={materials.Rim_Buttons} />
             <mesh geometry={nodes.defaultMaterial_10.geometry} material={materials.Flash_Glass_002} />
             <mesh geometry={nodes.defaultMaterial_11.geometry} material={materials.Flash_002} />
-            <mesh geometry={nodes.defaultMaterial_12.geometry} material={materials.Screen_BG} />
+            <mesh geometry={nodes.defaultMaterial_12.geometry} material={materials.Screen_BG} visible={false} />
             <mesh geometry={nodes.defaultMaterial_13.geometry} material={materials.Screw} />
           </group>
         </group>

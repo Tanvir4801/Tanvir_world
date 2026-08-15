@@ -259,11 +259,6 @@ export function MacBook({ tableHeight }: { tableHeight: number }) {
   const cameraView = useAppStore(state => state.cameraView);
   const isZoomedIn = cameraView === "macbook";
 
-  // The macBook screen mesh (Object_4 = glass/screen)
-  // The screen in the GLB faces +Z when upright. After AutoPlace scales it,
-  // the screen sits roughly at local Y = tableHeight + screenHeight, Z ≈ 0.
-  // We use Html `transform` to attach a flat plane to 3D space.
-
   return (
     <group
       position={[0.0, tableHeight, -0.08]}

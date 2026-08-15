@@ -50,7 +50,7 @@ const VIEW_CONFIGS: Record<CameraView, { position: THREE.Vector3; target: THREE.
 };
 
 export function CameraController() {
-  const { camera } = useThree();
+  const { camera, scene } = useThree();
   const controlsRef = useRef<any>(null);
   const cameraView = useAppStore(state => state.cameraView);
   const scrollProgress = useAppStore(state => state.scrollProgress);
@@ -75,8 +75,8 @@ export function CameraController() {
     
     if (cameraView === "macbook" || cameraView === "iphone") {
       // For dynamically placed objects, look for their anchors in the scene
-      const posObj = camera.parent?.getObjectByName(`${cameraView}-camera-pos`);
-      const targetObj = camera.parent?.getObjectByName(`${cameraView}-camera-target`);
+      const posObj = scene.getObjectByName(`${cameraView}-camera-pos`);
+      const targetObj = scene.getObjectByName(`${cameraView}-camera-target`);
       
       if (posObj && targetObj) {
         const p = new THREE.Vector3();
@@ -95,7 +95,7 @@ export function CameraController() {
     targetPos.current.copy(cfg.position);
     targetLook.current.copy(cfg.target);
     targetFov.current = cfg.fov;
-  }, [cameraView, camera.parent]);
+  }, [cameraView, scene]);
 
   useFrame((_, delta) => {
     const speed = 2.5 * delta; // smooth dolly
