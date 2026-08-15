@@ -28,32 +28,36 @@ export function WorldHUD() {
         </div>
 
         <nav className="hidden gap-8 text-xs tracking-widest text-white/70 sm:flex">
-          {/* WORK → cinematic zoom to monitor */}
-          <button
-            onClick={() => setCameraView(cameraView === "work" ? "hero" : "work")}
-            className={`hover:text-brand transition-colors ${cameraView === "work" ? "text-brand" : ""}`}
-          >
-            WORK
-          </button>
-          {/* ABOUT → wide-angle certificate wall shot */}
-          <button
-            onClick={() => setCameraView(cameraView === "about" ? "hero" : "about")}
-            className={`hover:text-brand transition-colors ${cameraView === "about" ? "text-brand" : ""}`}
-          >
-            ABOUT
-          </button>
-          {/* CONTACT → personal zone focus */}
-          <button
-            onClick={() => setCameraView(cameraView === "contact" ? "hero" : "contact")}
-            className={`hover:text-brand transition-colors ${cameraView === "contact" ? "text-brand" : ""}`}
-          >
-            CONTACT
-          </button>
+          {!isZoomed && (
+            <>
+              {/* WORK → cinematic zoom to monitor */}
+              <button
+                onClick={() => setCameraView("work")}
+                className="hover:text-brand transition-colors"
+              >
+                WORK
+              </button>
+              {/* ABOUT → wide-angle certificate wall shot */}
+              <button
+                onClick={() => setCameraView("about")}
+                className="hover:text-brand transition-colors"
+              >
+                ABOUT
+              </button>
+              {/* CONTACT → personal zone focus */}
+              <button
+                onClick={() => setCameraView("contact")}
+                className="hover:text-brand transition-colors"
+              >
+                CONTACT
+              </button>
+            </>
+          )}
           {/* ROOM → always snaps back to hero */}
           {isZoomed && (
             <button
               onClick={() => setCameraView("hero")}
-              className="text-white/40 hover:text-white transition-colors"
+              className="text-white hover:text-white transition-colors font-medium"
             >
               ↩ ROOM
             </button>
