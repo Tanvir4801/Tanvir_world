@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #4dd0e1;
+  --color-warm: #f5b561;
+}
+
+@layer base {
+  body {
+    background-color: #050505;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: var(--font-sans), sans-serif;
+  }
+}
+
+/* Base utility for hiding scrollbar while still allowing scroll */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
