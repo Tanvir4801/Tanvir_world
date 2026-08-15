@@ -1,0 +1,873 @@
+MASTER PROMPT — TANVIR'S WORLD
+PHASE 1 — 3D WORLD / ROOM / ASSET COMPOSITION / STATIC HERO
+
+You are working inside my EXISTING project.
+
+IMPORTANT:
+DO NOT create a new project.
+DO NOT delete the existing application.
+DO NOT replace the existing architecture unnecessarily.
+DO NOT remove existing working features unless they directly conflict with this specification.
+
+First inspect the entire existing project and understand:
+- current framework
+- existing components
+- existing 3D scene
+- camera implementation
+- loaded GLB assets
+- room/environment
+- current UI
+- existing Leva/debug controls
+- asset paths
+- styling
+- animations
+- scroll logic
+
+Then implement Phase 1 below.
+
+============================================================
+PROJECT VISION
+============================================================
+
+This website is:
+
+"TANVIR'S WORLD"
+
+A premium interactive 3D developer portfolio.
+
+It should feel like entering a real developer's private engineering workspace.
+
+NOT:
+- generic AI portfolio
+- random 3D showroom
+- game environment
+- empty sci-fi room
+- oversized furniture floating in space
+
+It should feel like a carefully designed real developer room.
+
+The 3D environment is the main visual identity.
+
+============================================================
+PHASE 1 GOAL
+============================================================
+
+PHASE 1 has ONLY one purpose:
+
+BUILD A BEAUTIFUL, REALISTIC, WELL-COMPOSED STATIC DEVELOPER ROOM.
+
+Before implementing cinematic scrolling, lock:
+
+1. Room
+2. Tables
+3. Devices
+4. Object positions
+5. Object scales
+6. Object rotations
+7. Certificate wall
+8. MacBook screen
+9. iPhone screen
+10. Lighting baseline
+11. Hero camera
+12. Responsive composition
+
+DO NOT move to Phase 2 until Phase 1 is visually correct.
+
+============================================================
+AVAILABLE GLB ASSETS
+============================================================
+
+Use the existing GLB assets already present in the project.
+
+Known assets include:
+
+- desk_lamp.glb
+- ficus_bonsai.glb
+- iphone_16_plus.glb
+- macbook_air_m2.glb
+- programmer_desktop_3d_pc.glb
+- L-shaped developer/gaming table
+- small/main cyber table
+- phone stand
+
+IMPORTANT:
+
+Do not download replacement assets.
+
+Do not substitute these assets with primitive boxes.
+
+Use the actual GLB models.
+
+If an asset contains multiple meshes, preserve the model and
+position it correctly.
+
+============================================================
+ROOM COMPOSITION
+============================================================
+
+Create ONE coherent developer room.
+
+The room should have:
+
+BACK WALL
+LEFT DEVELOPER ZONE
+CENTER/RIGHT PERSONAL TECHNOLOGY ZONE
+CERTIFICATE WALL AREA
+
+The room must NOT feel enormous.
+
+Avoid huge empty floor space.
+
+The camera should frame the useful portion of the room.
+
+The room is a background/container for the workstations,
+not the main subject.
+
+============================================================
+ZONE 1 — DEVELOPER WORKSTATION
+============================================================
+
+Use the LARGE L-SHAPED TABLE.
+
+This is the main developer workstation.
+
+POSITION:
+
+LEFT side of the room.
+
+The L-shaped table should touch / sit naturally against the
+left/back wall.
+
+It must look physically believable.
+
+Do NOT float it.
+
+Do NOT put it in the center of the room.
+
+Do NOT rotate it randomly.
+
+The L-shaped table is the permanent developer zone.
+
+============================================================
+DEVELOPER DESKTOP SETUP
+============================================================
+
+Place the existing programmer desktop GLB setup ON the
+L-shaped table.
+
+The setup must physically sit on the tabletop.
+
+It must NOT float below the desk.
+
+It must NOT appear as a separate platform.
+
+The developer workstation should contain:
+
+- desktop monitor
+- desktop PC
+- keyboard
+- mouse
+- speakers if included in asset
+- desk lamp
+
+The monitor must be clearly visible from the hero camera.
+
+The PC must be clearly recognizable.
+
+Use realistic human proportions.
+
+Do NOT make the PC gigantic.
+
+Do NOT make the workstation tiny.
+
+============================================================
+DEVELOPER SCREEN
+============================================================
+
+The developer monitor must show a realistic developer screen.
+
+Use a clean dark coding environment.
+
+Example visual:
+
+VS Code-style editor
+
+with realistic code.
+
+Do NOT show fake unreadable giant text.
+
+Do NOT use excessive neon.
+
+The screen should look like an actual developer workstation.
+
+============================================================
+ZONE 2 — PERSONAL TECHNOLOGY TABLE
+============================================================
+
+Use the smaller cyber/gaming table.
+
+This is the personal technology zone.
+
+POSITION:
+
+CENTER-RIGHT of the room.
+
+It should be clearly separated from the developer desk.
+
+There should be a realistic walking gap between the two zones.
+
+Do NOT place the tables extremely far apart.
+
+Do NOT overlap the tables.
+
+Target relationship:
+
+[L-SHAPED DEVELOPER DESK]
+          ↓
+     walking space
+          ↓
+[SMALL MAIN TABLE]
+
+The two zones must feel like they belong to the SAME ROOM.
+
+============================================================
+MAIN TABLE CONTENT
+============================================================
+
+The smaller table contains:
+
+1. MacBook Air M2
+2. iPhone 16 Plus
+3. Phone stand
+4. Bonsai
+
+============================================================
+MACBOOK
+============================================================
+
+Place MacBook Air M2 approximately in the center/rear-center
+of the small table.
+
+It must physically sit ON the tabletop.
+
+Screen should face toward the hero camera.
+
+Use realistic scale.
+
+The MacBook should be one of the primary visual objects.
+
+============================================================
+MACBOOK SCREEN — macOS
+============================================================
+
+THIS IS IMPORTANT.
+
+The MacBook screen must show a believable modern macOS desktop.
+
+Do NOT leave it blank.
+
+Do NOT show a generic random wallpaper only.
+
+Create a visually polished macOS-style screen.
+
+The screen can contain:
+
+- macOS-style menu bar
+- Dock
+- Finder/browser/development windows
+- subtle developer/project workspace
+- realistic desktop UI
+
+The screen must clearly communicate:
+
+"MacBook + macOS + developer"
+
+Do NOT copy Apple's interface pixel-for-pixel.
+
+Create an original macOS-inspired visual.
+
+Keep it elegant and believable.
+
+============================================================
+IPHONE
+============================================================
+
+The iPhone must be mounted in the PHONE STAND.
+
+This is mandatory.
+
+Do NOT place the phone flat on the table.
+
+Do NOT leave it floating.
+
+Do NOT place the stand separately from the phone.
+
+Correct relationship:
+
+TABLE
+ ↓
+PHONE STAND
+ ↓
+IPHONE
+
+The iPhone should be portrait orientation.
+
+The screen must face the hero camera.
+
+The iPhone must be clearly visible.
+
+============================================================
+IPHONE SCREEN — iOS
+============================================================
+
+The iPhone screen must show a polished iOS-inspired interface.
+
+Do NOT leave the screen blank.
+
+Do NOT use a generic random image.
+
+Create an original iOS-style home/app screen.
+
+Possible content:
+
+- clean wallpaper
+- clock
+- widgets
+- app icons
+- subtle developer-related app
+
+The visual should communicate:
+
+"iPhone + iOS"
+
+Do not copy Apple's UI exactly.
+
+============================================================
+BONSAI
+============================================================
+
+Place the bonsai on the small table.
+
+Position:
+
+rear-right portion of the table.
+
+It should provide a natural human touch.
+
+Do NOT make it larger than the laptop.
+
+Do NOT hide it behind the laptop.
+
+============================================================
+CERTIFICATE WALL
+============================================================
+
+Add a dedicated certificate display area.
+
+This is important to the portfolio identity.
+
+Use the BACK WALL / suitable wall surface.
+
+Create approximately:
+
+4–5 empty certificate frames.
+
+The frames should look like real premium wall-mounted
+certificate frames.
+
+Use:
+
+- realistic spacing
+- clean alignment
+- subtle depth
+- premium dark/metallic/wood frame style
+- soft lighting
+
+IMPORTANT:
+
+For Phase 1, the frames should be BLANK PLACEHOLDERS.
+
+Do NOT invent certificate names.
+
+Do NOT invent certificate logos.
+
+Do NOT generate fake achievements.
+
+The user will provide the real certificate images later.
+
+Each frame should have a proper image/text placeholder
+so the real certificate can be inserted later.
+
+Suggested arrangement:
+
+[ CERT 1 ] [ CERT 2 ] [ CERT 3 ]
+
+      [ CERT 4 ] [ CERT 5 ]
+
+OR another visually balanced gallery layout.
+
+Do NOT overcrowd the wall.
+
+============================================================
+ROOM DECOR
+============================================================
+
+Keep decoration minimal.
+
+The room should communicate:
+
+developer
+engineering
+technology
+professional
+creative
+
+Do NOT fill the room with random 3D objects.
+
+Do NOT add gaming chairs, beds, plants, posters, shelves,
+robots, neon signs, or random decorations unless they already
+exist in the current scene and are necessary.
+
+We want intentional design.
+
+============================================================
+MATERIAL / COLOR DIRECTION
+============================================================
+
+Overall style:
+
+PREMIUM DARK DEVELOPER STUDIO.
+
+Base:
+
+dark charcoal / near-black walls
+
+Floor:
+
+dark neutral material with subtle variation.
+
+Furniture:
+
+dark graphite / black / metallic.
+
+Accent:
+
+very restrained red/cyan lighting inspired by the existing
+cyber table and developer environment.
+
+IMPORTANT:
+
+Do not turn the room into cyberpunk.
+
+Do not make everything glow.
+
+The GLB materials should remain recognizable.
+
+============================================================
+LIGHTING
+============================================================
+
+Phase 1 lighting should prioritize VISIBILITY.
+
+Use:
+
+- soft ambient lighting
+- soft key light
+- subtle developer workstation light
+- subtle warm lamp light
+- subtle cool screen illumination
+
+Avoid:
+
+- giant spotlights
+- huge floor light cones
+- excessive bloom
+- extreme orange lighting
+- extreme cyan lighting
+- objects disappearing into black
+
+Every important model must be readable.
+
+============================================================
+CAMERA — PHASE 1 HERO CAMERA
+============================================================
+
+DO NOT use a drone camera.
+
+DO NOT use a top-down camera.
+
+DO NOT use an extremely wide camera.
+
+DO NOT put the camera on the floor.
+
+Use a human eye-level cinematic camera.
+
+Approximate:
+
+camera height = 1.55–1.70m
+
+FOV = approximately 48–55 degrees
+
+Camera should be close enough to clearly see:
+
+LEFT:
+developer PC workstation
+
+CENTER:
+room depth
+
+RIGHT:
+MacBook + iPhone + bonsai
+
+The two workstation zones should occupy most of the useful
+visual frame.
+
+Avoid giant empty floor.
+
+Avoid giant empty ceiling.
+
+Avoid showing huge unused room areas.
+
+============================================================
+HERO CAMERA TARGET
+============================================================
+
+The camera target should be around:
+
+1.1–1.3m height.
+
+Target approximately between the two workstation zones.
+
+The camera should naturally look slightly downward toward
+the desktops.
+
+The tables should NOT look distorted.
+
+============================================================
+CAMERA COMPOSITION
+============================================================
+
+Ideal composition:
+
+        BACK WALL
+┌───────────────────────────────────────┐
+│  CERTIFICATES                          │
+│                                        │
+│ ┌────────────────┐     ┌───────────┐ │
+│ │ DEVELOPER      │     │           │ │
+│ │ L-DESK         │     │ MACBOOK   │ │
+│ │                │     │ IPHONE    │ │
+│ │ PC + MONITOR   │     │ BONSAI    │ │
+│ └────────────────┘     └───────────┘ │
+│                                        │
+└───────────────────────────────────────┘
+
+The exact geometry must be adapted to the actual GLB
+dimensions.
+
+This diagram represents visual hierarchy, NOT literal coordinates.
+
+============================================================
+IMPORTANT — DO NOT GUESS COORDINATES BLINDLY
+============================================================
+
+Before setting positions:
+
+inspect actual GLB bounding boxes.
+
+Calculate:
+
+- width
+- depth
+- height
+- center
+- tabletop height
+
+Then place objects using relative relationships.
+
+For example:
+
+PC position should be calculated relative to developer table.
+
+MacBook position should be calculated relative to main table.
+
+iPhone stand position should be calculated relative to main table.
+
+This prevents floating and misalignment.
+
+============================================================
+DEBUG / EDIT MODE
+============================================================
+
+Keep a development-only editor.
+
+It should allow:
+
+Camera:
+- position X/Y/Z
+- target X/Y/Z
+- FOV
+
+Developer table:
+- position
+- rotation
+- scale
+
+Main table:
+- position
+- rotation
+- scale
+
+PC:
+- local position
+- rotation
+- scale
+
+MacBook:
+- local position
+- rotation
+- scale
+
+Phone stand:
+- local position
+- rotation
+- scale
+
+iPhone:
+- local position
+- rotation
+- scale
+
+Bonsai:
+- local position
+- rotation
+- scale
+
+Lamp:
+- local position
+- rotation
+- scale
+
+Certificates:
+- wall position
+- spacing
+- frame scale
+
+IMPORTANT:
+
+Use these controls for DEVELOPMENT only.
+
+Do not expose this panel to normal visitors.
+
+============================================================
+PHASE 1 LOCK
+============================================================
+
+Once the composition is correct:
+
+CREATE ONE CENTRAL CONFIGURATION SOURCE.
+
+Example concept:
+
+sceneConfig
+
+containing:
+
+room
+developerTable
+mainTable
+desktop
+lamp
+macbook
+phoneStand
+iphone
+bonsai
+certificates
+heroCamera
+lighting
+
+Every position/rotation/scale should come from this configuration.
+
+Do NOT scatter random coordinates across components.
+
+============================================================
+NO RANDOM CHANGES AFTER LOCK
+============================================================
+
+Once Phase 1 is approved:
+
+DO NOT automatically change:
+
+- table positions
+- model positions
+- model scales
+- room layout
+- certificate layout
+- hero camera composition
+
+Phase 2 must build ON TOP of Phase 1.
+
+============================================================
+RESPONSIVE BEHAVIOR
+============================================================
+
+Desktop:
+
+Full cinematic 3D composition.
+
+Laptop:
+
+Maintain both workstation zones.
+
+Mobile:
+
+Do NOT allow objects to become microscopic.
+
+If necessary, adjust camera framing while preserving the same
+physical room layout.
+
+The 3D scene must remain visually understandable.
+
+============================================================
+PERFORMANCE
+============================================================
+
+Optimize GLB loading.
+
+Use:
+
+- lazy loading where appropriate
+- compressed textures where safe
+- proper renderer settings
+- device pixel ratio limits
+- efficient shadows
+- no unnecessary post-processing
+
+Do NOT sacrifice model quality unnecessarily.
+
+============================================================
+UI
+============================================================
+
+Keep the existing minimal UI identity:
+
+Top-left:
+
+TANVIR
+ENGINEERING WORLD
+
+Hero title:
+
+TANVIR'S WORLD
+
+Subtitle:
+
+FULL-STACK DEVELOPER
+
+Supporting text:
+
+Building Web, Mobile & Cloud Systems
+
+Do not let text overlap 3D objects.
+
+Use generous negative space.
+
+Typography should feel premium and restrained.
+
+============================================================
+PHASE 1 DELIVERABLE
+============================================================
+
+At the end of this task I want:
+
+1. Complete developer room.
+2. L-shaped developer desk correctly placed.
+3. Developer PC physically sitting on it.
+4. Main cyber table correctly placed.
+5. MacBook physically sitting on main table.
+6. MacBook showing a polished macOS-inspired screen.
+7. iPhone physically mounted in phone stand.
+8. iPhone showing polished iOS-inspired screen.
+9. Bonsai correctly positioned.
+10. 4–5 blank certificate frames mounted on wall.
+11. Realistic room scale.
+12. Premium readable lighting.
+13. Correct human-eye hero camera.
+14. No giant empty floor.
+15. No floating objects.
+16. No random assets.
+17. No broken GLB loading.
+18. Responsive desktop/laptop/mobile framing.
+19. Development editor available but isolated.
+20. All final values centralized in sceneConfig.
+
+============================================================
+CRITICAL WORKFLOW
+============================================================
+
+DO NOT proceed to cinematic scroll.
+
+DO NOT add camera journey.
+
+DO NOT add room transitions.
+
+DO NOT add portfolio project interactions.
+
+DO NOT add About section.
+
+DO NOT add Work section.
+
+DO NOT add Contact section.
+
+DO NOT add particle effects.
+
+DO NOT add excessive animations.
+
+PHASE 1 ONLY.
+
+First make the physical world excellent.
+
+After implementation:
+
+RUN the application.
+
+Inspect the actual rendered browser result.
+
+Check from the hero camera.
+
+Check that every GLB is visible.
+
+Check that every object sits correctly on its parent surface.
+
+Check that MacBook screen is visible.
+
+Check that iPhone screen is visible.
+
+Check that developer monitor is visible.
+
+Check that certificates are visible.
+
+Check for floating/intersecting objects.
+
+Check desktop and mobile.
+
+Fix actual visual problems before reporting completion.
+
+Do not simply tell me that the implementation is complete.
+
+Actually verify the rendered result.
+
+FINAL RESPONSE:
+
+Report:
+- what was changed
+- final scene structure
+- asset loading status
+- camera status
+- certificate frame status
+- macOS screen status
+- iOS screen status
+- responsive status
+- any remaining issue
+
+Do not begin Phase 2.

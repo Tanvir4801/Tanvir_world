@@ -1,16 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-brand: #4dd0e1;
   --color-warm: #f5b561;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Manrope", sans-serif;
+  --font-mono: "DM Mono", monospace;
 }
 
 @layer base {
   :root {
-    font-family: "Inter", sans-serif;
-    color: #f1f1f1;
-    background: #050505;
+    font-family: "Manrope", sans-serif;
+    color: #e8eef0;
+    background: #040708;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
   }
@@ -26,8 +28,8 @@
 
   body {
     overflow-x: hidden;
-    background-color: #050505;
-    color: #f1f1f1;
+    background-color: #040708;
+    color: #e8eef0;
   }
 
   button,
@@ -35,6 +37,14 @@
     font: inherit;
   }
 }
+
+* { box-sizing: border-box; }
+button { cursor: pointer; }
+.mono { font-family: "DM Mono", monospace; }
+.glass-line { border: 1px solid rgba(195, 226, 231, 0.14); background: rgba(11, 18, 21, 0.72); backdrop-filter: blur(18px); }
+@keyframes scan { from { transform: translateY(-100%); opacity: 0; } 50% { opacity: .25; } to { transform: translateY(100%); opacity: 0; } }
+@keyframes desktop-in { from { opacity: 0; transform: scale(.96) translateY(18px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.desktop-in { animation: desktop-in .75s cubic-bezier(.2,.8,.2,1) both; }
 
 ::-webkit-scrollbar {
   display: none;

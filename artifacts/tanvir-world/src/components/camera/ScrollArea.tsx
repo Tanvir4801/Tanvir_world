@@ -6,6 +6,7 @@ import { useAppStore } from "@/store/useAppStore";
 
 export function ScrollArea() {
   const setScrollProgress = useAppStore((state) => state.setScrollProgress);
+  const setSceneLabel = useAppStore((state) => state.setSceneLabel);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -23,6 +24,7 @@ export function ScrollArea() {
       const progress = e.scroll / e.limit;
       if (!isNaN(progress)) {
         setScrollProgress(progress);
+        setSceneLabel(progress > 0.68 ? "DESKTOP" : progress > 0.18 ? "MACBOOK ZONE" : "ROOM");
       }
     });
 
@@ -36,12 +38,12 @@ export function ScrollArea() {
     return () => {
       lenis.destroy();
     };
-  }, [setScrollProgress]);
+  }, [setScrollProgress, setSceneLabel]);
 
   return (
     // This invisible div defines the total scroll height
     <div
-      style={{ height: "400vh", width: "100%", pointerEvents: "none" }}
+      style={{ height: "520vh", width: "100%", pointerEvents: "none" }}
       aria-hidden="true"
     />
   );

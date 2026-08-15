@@ -12,11 +12,6 @@ export function IntroOverlay() {
 
   if (!mounted) return null;
 
-  // TEMPORARILY DISABLED for inspection camera layout building
-  return null;
-
-  // Fades out entirely by the time progress is 12%
-  /*
   const visible = scrollProgress < 0.12;
 
   return (
@@ -39,12 +34,11 @@ export function IntroOverlay() {
               FULL-STACK DEVELOPER
             </p>
             <p className="text-white/60 tracking-wider text-xs md:text-sm max-w-md">
-              Building Web, Mobile & Cloud Systems
+              A private workspace for web, mobile, and cloud systems
             </p>
           </div>
         </motion.div>
       )}
     </AnimatePresence>
   );
-  */
 }

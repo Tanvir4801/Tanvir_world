@@ -2,6 +2,7 @@ import { WorldScene } from "@/components/world/WorldScene";
 import { WorldHUD } from "@/components/hud/WorldHUD";
 import { IntroOverlay } from "@/components/hud/IntroOverlay";
 import { ScrollArea } from "@/components/camera/ScrollArea";
+import { WorkspaceDesktop } from "@/components/desktop/WorkspaceDesktop";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <WorldHUD />
         <IntroOverlay />
       </div>
+      <WorkspaceDesktop />
 
       {/* Invisible Scroll Area to drive the camera */}
       <ScrollArea />

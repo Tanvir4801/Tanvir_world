@@ -25,6 +25,8 @@ interface AppState {
   setTableBounds: (id: string, bounds: BoxBounds) => void;
   zonePositions: Record<string, { x: number, y: number, z: number }>;
   setZonePosition: (id: string, pos: { x: number, y: number, z: number }) => void;
+  desktopApp: string | null;
+  setDesktopApp: (app: string | null) => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -46,4 +48,6 @@ export const useAppStore = create<AppState>((set) => ({
   setZonePosition: (id, pos) => set((state) => ({
     zonePositions: { ...state.zonePositions, [id]: pos }
   })),
+  desktopApp: null,
+  setDesktopApp: (app) => set({ desktopApp: app }),
 }));
