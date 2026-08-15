@@ -209,7 +209,7 @@ export function IPhone({ standHeight }: { standHeight: number }) {
       {/* ── Camera Anchors ────────────────────────────────────────────── */}
       <group position={[0, sceneConfig.iphone.targetWidth * 1.0, 0]}>
         <group name="iphone-camera-target" position={[0, 0, 0]} />
-        <group name="iphone-camera-pos" position={[0, 0, 0.4]} />
+        <group name="iphone-camera-pos" position={[0, 0, 0.85]} />
       </group>
 
       {/* ── Background Dimmer ────────────────────────────────────────── */}

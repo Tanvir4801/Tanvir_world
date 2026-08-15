@@ -277,7 +277,7 @@ export function MacBook({ tableHeight }: { tableHeight: number }) {
         rotation={[-0.26, 0, 0]}
       >
         <group name="macbook-camera-target" position={[0, 0, 0]} />
-        <group name="macbook-camera-pos" position={[0, 0, 0.42]} />
+        <group name="macbook-camera-pos" position={[0, 0, 0.7]} />
       </group>
 
       {/* ── Background Dimmer ──────────────────────────────────────────
