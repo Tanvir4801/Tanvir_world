@@ -1,29 +1,21 @@
 "use client";
 
-import { Html } from "@react-three/drei";
-import { useState } from "react";
+import * as THREE from "three";
 import { Model as MacBookModel } from "../models/MacBookModel";
 import { AutoPlace } from "./AutoPlace";
-import { useControls } from "leva";
+import { useAppStore } from "@/store/useAppStore";
+import { sceneConfig } from "@/config/sceneConfig";
 
-export function MacBook({ tableHeight }: { tableHeight?: number }) {
-  const [hovered, setHovered] = useState(false);
-  
-  const config = useControls("PERSONAL.MacBook", {
-    x: { value: 0.00, step: 0.01 }, // Center
-    z: { value: -0.10, step: 0.01 }, // Slightly rear-center
-    rotY: { value: 0, step: 0.01 }, // Facing camera
-    targetWidth: { value: 0.38, step: 0.01 }, // Realistic 15-inch laptop scale relative to 1.5m table
-  });
+export function MacBook({ tableHeight }: { tableHeight: number }) {
+  const setCameraView = useAppStore(state => state.setCameraView);
+  const cameraView = useAppStore(state => state.cameraView);
 
   return (
-    <group 
-      position={[config.x, tableHeight || 0.74, config.z]}
-      rotation={[0, config.rotY, 0]}
-      onPointerEnter={() => setHovered(true)}
-      onPointerLeave={() => setHovered(false)}
+    <group
+      position={[0.0, tableHeight, -0.08]}
+      onClick={() => setCameraView(cameraView === "macbook" ? "hero" : "macbook")}
     >
-      <AutoPlace targetWidth={config.targetWidth} surfaceY={0}>
+      <AutoPlace targetWidth={sceneConfig.macbook.targetWidth} surfaceY={0}>
         <MacBookModel />
       </AutoPlace>
     </group>

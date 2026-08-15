@@ -26,33 +26,31 @@ export function WorldScene() {
 
   if (!webglAvailable) {
     return (
-      <div
-        className="relative h-full w-full overflow-hidden bg-[#030303]"
-        aria-label="Tanvir's World 3D scene"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_38%,rgba(77,208,225,0.08),transparent_32%),linear-gradient(135deg,#070707_0%,#030303_60%,#0a0a0a_100%)]" />
-        <div className="absolute left-[18%] top-[34%] h-px w-[64%] bg-white/10" />
-        <div className="absolute left-[18%] top-[34%] h-[35%] w-px bg-white/10" />
-        <div className="absolute right-[18%] top-[34%] h-[35%] w-px bg-white/10" />
-        <div className="absolute left-[18%] top-[69%] h-px w-[64%] bg-white/10" />
-        <div className="absolute left-[26%] top-[50%] h-20 w-36 border border-brand/20 bg-brand/5 shadow-[0_0_45px_rgba(77,208,225,0.08)]" />
-        <div className="absolute right-[25%] top-[49%] h-16 w-28 border border-warm/20 bg-warm/5 shadow-[0_0_45px_rgba(245,181,97,0.06)]" />
+      <div className="relative h-full w-full overflow-hidden bg-[#030303]" aria-label="Tanvir's World 3D scene">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_38%,rgba(77,208,225,0.08),transparent_32%)]" />
       </div>
     );
   }
 
   return (
-    <Canvas shadows>
-      <color attach="background" args={["#030303"]} />
-      
-      <CameraController />
-      <WorldLighting />
+    // pointer-events-auto so 3D objects receive click events
+    <div className="h-full w-full" style={{ pointerEvents: "auto" }}>
+      <Canvas
+        shadows
+        gl={{ antialias: true }}
+        camera={{ fov: 52, near: 0.1, far: 100 }}
+      >
+        <color attach="background" args={["#030303"]} />
 
-      <Suspense fallback={null}>
-        <RoomGeometry />
-        <DeveloperZone />
-        <MainWorkspace />
-      </Suspense>
-    </Canvas>
+        <CameraController />
+        <WorldLighting />
+
+        <Suspense fallback={null}>
+          <RoomGeometry />
+          <DeveloperZone />
+          <MainWorkspace />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 }

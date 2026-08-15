@@ -1,55 +1,63 @@
 "use client";
 
-import { useControls } from "leva";
+import { useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+import { useAppStore } from "@/store/useAppStore";
 import { Model as CyberpunkTableModel } from "../models/CyberpunkTableModel";
+import { Model as FicusBonsaiModel } from "../models/FicusBonsaiModel";
+import { AutoPlace } from "./AutoPlace";
 import { MacBook } from "./MacBook";
 import { PhoneStand } from "./PhoneStand";
-import { AutoPlace } from "./AutoPlace";
-import { useAppStore } from "@/store/useAppStore";
-import { Model as FicusBonsaiModel } from "../models/FicusBonsaiModel";
+import { ROOM, sceneConfig } from "@/config/sceneConfig";
 
 export function MainWorkspace() {
-  const tableHeight = useAppStore(state => state.tableHeights['mainTable'] || 0.74);
-  const setTableHeight = useAppStore(state => state.setTableHeight);
-  const devTableBounds = useAppStore(state => state.tableBounds['developerTable']);
-  const devZonePos = useAppStore(state => state.zonePositions['developerZone']);
+  const groupRef = useRef<THREE.Group>(null);
 
-  // Group: TABLES
-  const table = useControls("TABLES.Personal Table", {
-    gapX: { value: 1.2, step: 0.1, label: "Gap to Dev Table" }, // 1-1.5 table width walking gap
-    z: { value: 0.80, step: 0.01 }, // Pull forward slightly relative to L-desk
-    rotY: { value: 0, step: 0.01 },
-    targetWidth: { value: 1.5, step: 0.01 }, // ~68% of 2.2 Developer Table width
-  });
+  const devZonePos = useAppStore(state => state.zonePositions["developerZone"]);
+  const devTableBounds = useAppStore(state => state.tableBounds["developerTable"]);
+  const tableHeight = useAppStore(state => state.tableHeights["mainTable"] ?? 0);
 
-  // Calculate the absolute WORLD X of the Developer Table's right edge
-  const devMaxWorldX = (devZonePos && devTableBounds) 
-    ? devZonePos.x + devTableBounds.maxX 
-    : 0.45;
+  // Walking gap between the two zones: 0.85 m (≈ one stride)
+  const WALK_GAP = 0.85;
 
-  const dynamicX = devMaxWorldX + table.gapX;
+  useFrame(() => {
+    if (!groupRef.current) return;
+    if (!devZonePos || !devTableBounds) {
+      // Fallback until developer zone is measured
+      groupRef.current.position.set(1.1, 0, 0.65);
+      return;
+    }
 
-  // Group: PERSONAL
-  const bonsai = useControls("PERSONAL.Bonsai", {
-    x: { value: 0.45, step: 0.01 },
-    z: { value: -0.25, step: 0.01 },
-    rotY: { value: 0, step: 0.01 },
-    targetWidth: { value: 0.15, step: 0.01 },
+    // Right edge of the L-desk in world space
+    const devRightEdge = devZonePos.x + devTableBounds.maxX;
+    groupRef.current.position.set(
+      devRightEdge + WALK_GAP,
+      0,    // floor
+      0.65, // slightly forward so both zones are in the same camera frame
+    );
   });
 
   return (
-    <group position={[dynamicX, 0, table.z]} rotation={[0, table.rotY, 0]}>
-      
-      <AutoPlace id="mainTable" targetWidth={table.targetWidth} surfaceY={0} onHeightCalculated={(h) => setTableHeight('mainTable', h)}>
+    <group ref={groupRef}>
+      {/* ── Personal (Cyberpunk) Table ──────────────────────────── */}
+      <AutoPlace
+        id="mainTable"
+        targetWidth={sceneConfig.mainTable.targetWidth}
+        surfaceY={ROOM.floor}
+      >
         <CyberpunkTableModel />
       </AutoPlace>
 
-      {/* Child items placed locally on the tabletop */}
+      {/* ── MacBook ─ center of table ───────────────────────────── */}
       <MacBook tableHeight={tableHeight} />
+
+      {/* ── Phone stand + iPhone ────────────────────────────────── */}
       <PhoneStand tableHeight={tableHeight} />
-      
-      <group position={[bonsai.x, tableHeight, bonsai.z]} rotation={[0, bonsai.rotY, 0]}>
-        <AutoPlace targetWidth={bonsai.targetWidth} surfaceY={0}>
+
+      {/* ── Bonsai ─ rear-right corner ──────────────────────────── */}
+      <group position={[0.38, tableHeight, -0.22]}>
+        <AutoPlace targetWidth={sceneConfig.bonsai.targetWidth} surfaceY={0}>
           <FicusBonsaiModel />
         </AutoPlace>
       </group>

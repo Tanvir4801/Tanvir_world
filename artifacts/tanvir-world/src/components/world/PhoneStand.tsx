@@ -1,33 +1,32 @@
 "use client";
 
-import { useControls } from "leva";
-import { Model as PhoneStandModel } from "../models/PhoneStandModel";
-import { IPhone } from "./IPhone";
-import { AutoPlace } from "./AutoPlace";
 import { useState } from "react";
+import { Model as PhoneStandModel } from "../models/PhoneStandModel";
+import { AutoPlace } from "./AutoPlace";
+import { IPhone } from "./IPhone";
+import { sceneConfig } from "@/config/sceneConfig";
+import { useAppStore } from "@/store/useAppStore";
 
 export function PhoneStand({ tableHeight }: { tableHeight: number }) {
   const [standHeight, setStandHeight] = useState(0);
-
-  const stand = useControls("PERSONAL.Phone Stand", {
-    x: { value: 0.35, step: 0.01 },
-    z: { value: 0.20, step: 0.01 },
-    rotY: { value: 0, step: 0.01 },
-    targetWidth: { value: 0.12, step: 0.01 },
-  });
+  const setCameraView = useAppStore(state => state.setCameraView);
+  const cameraView = useAppStore(state => state.cameraView);
 
   return (
-    <group position={[stand.x, tableHeight, stand.z]} rotation={[0, stand.rotY, 0]}>
-      <AutoPlace 
-        targetWidth={stand.targetWidth} 
+    // Slightly right of the MacBook and forward
+    <group
+      position={[0.30, tableHeight, 0.18]}
+      onClick={() => setCameraView(cameraView === "iphone" ? "hero" : "iphone")}
+    >
+      <AutoPlace
+        targetWidth={sceneConfig.phoneStand.targetWidth}
         surfaceY={0}
-        onHeightCalculated={(h) => setStandHeight(h)}
+        onHeightCalculated={setStandHeight}
       >
         <PhoneStandModel />
       </AutoPlace>
 
-      {/* The iPhone is nested inside the phone stand, so it moves with it. 
-          It receives the standHeight so it can be offset dynamically. */}
+      {/* iPhone mounted inside stand — local coords relative to stand base */}
       <IPhone standHeight={standHeight} />
     </group>
   );

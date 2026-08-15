@@ -1,3 +1,9 @@
+// Scene-wide coordinate constants.
+// The room geometry is built in RoomGeometry.tsx.
+// Floor is at Y = 0.
+// Left wall inner face is at X ≈ -3.0
+// Back wall inner face is at Z ≈ -2.5
+
 export const ROOM = {
   floor: 0,
   leftWall: -3.0,
@@ -6,57 +12,57 @@ export const ROOM = {
   frontWall: 2.5,
 };
 
+// These values are INITIAL DEFAULTS.
+// All final positions are computed from bounding boxes at runtime inside each Zone component.
 export const sceneConfig = {
-  // ==========================================
-  // TABLES
-  // ==========================================
   developerTable: {
-    position: [-1.20, ROOM.floor, -0.70],
-    rotation: [0, 0, 0],
-    targetWidth: 2.2,
+    targetWidth: 2.2,   // world metres
+    rotation: [0, 0, 0] as [number, number, number],
   },
   mainTable: {
-    position: [0.45, ROOM.floor, 0.60], 
-    rotation: [0, 0, 0],
-    targetWidth: 1.4, 
+    targetWidth: 1.3,   // ~60% of L-desk — scaled for MacBook/iPhone to look right
+    rotation: [0, 0, 0] as [number, number, number],
   },
-
-  // ==========================================
-  // DEVELOPER ZONE (Parent: developerTable)
-  // ==========================================
   desktopPc: {
-    position: [-0.45, 0.00, 0.15], 
-    rotation: [0, 0, 0],
-    targetWidth: 0.90,
+    targetWidth: 1.1,   // wide enough to see monitor clearly
   },
   lamp: {
-    position: [0.55, 0, 0.15],
-    rotation: [0, -0.20, 0],
-    targetWidth: 0.2,
+    targetWidth: 0.25,
   },
-
-  // ==========================================
-  // MAIN WORKSPACE (Parent: mainTable)
-  // ==========================================
   macbook: {
-    position: [0.00, 0, -0.05], 
-    rotation: [0, 0, 0], 
-    targetWidth: 0.38,
+    targetWidth: 0.35,  // ~15-inch laptop realistic width
   },
   phoneStand: {
-    position: [0.35, 0, 0.20], 
-    rotation: [0, 0, 0], // I'll keep default rotation 0 unless specified
-    targetWidth: 0.12,
+    targetWidth: 0.11,
   },
   iphone: {
-    // Parent: phoneStand
-    position: [0, 0.05, 0.02], 
-    rotation: [-0.15, 0, 0],
     targetWidth: 0.08,
   },
   bonsai: {
-    position: [0.45, 0, -0.25], 
-    rotation: [0, 0, 0],
-    targetWidth: 0.15, 
+    targetWidth: 0.14,
   },
+
+  // Project data for the WORK panel (cinematic zoom target)
+  projects: [
+    {
+      name: "Trackify",
+      tech: "React Native · Firebase · GPS",
+      description: "Real-time location tracking app for deliveries and field teams.",
+    },
+    {
+      name: "ParkNow",
+      tech: "Flutter · Node.js · Stripe",
+      description: "Smart parking finder and payment platform for urban drivers.",
+    },
+    {
+      name: "GaamRide",
+      tech: "React · Express · Maps API",
+      description: "Ride-sharing platform built for the gaming event circuit.",
+    },
+    {
+      name: "AI-Powered DevOps Dashboard",
+      tech: "Python · Grafana · OpenAI",
+      description: "Monitoring dashboard with AI anomaly detection and incident triage.",
+    },
+  ],
 };
