@@ -28,10 +28,12 @@ const VIEW_CONFIGS: Record<CameraView, { position: THREE.Vector3; target: THREE.
     fov: 34,
   },
   macbook: {
-    // Zoom toward the MacBook screen
-    position: new THREE.Vector3(0.35, 1.2, 1.15),
-    target: new THREE.Vector3(0.35, 0.85, 0.3),
-    fov: 36,
+    // Tight face-on zoom — fills frame with screen + keyboard
+    // MacBook sits at approx (devRightEdge + gap) world-X, tableHeight ~0.74
+    // We sit very close in Z, exactly in front, eye level with the screen hinge
+    position: new THREE.Vector3(0.9, 1.08, 1.35),
+    target: new THREE.Vector3(0.9, 0.92, 0.62),
+    fov: 22,  // very tight to fill frame
   },
   about: {
     // Pull back to show certificate wall (back wall, wide shot)
